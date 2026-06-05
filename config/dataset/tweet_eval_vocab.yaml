@@ -1,0 +1,44 @@
+name: tweet eval vocab
+
+train_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: train
+  data_name: tweet_eval
+  output_dir: data/tweet_eval_vocab/
+  model_name: google-bert/bert-base-uncased 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.TweetEvalPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+
+
+valid_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: validation
+  data_name: tweet_eval
+  output_dir: data/tweet_eval_vocab/
+  model_name: google-bert/bert-base-uncased 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.TweetEvalPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+
+test_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: test
+  data_name: tweet_eval
+  output_dir: data/tweet_eval_vocab/
+  model_name: google-bert/bert-base-uncased 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.TweetEvalPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}

@@ -1,0 +1,15 @@
+_target_: train.train.ModelTrainerLearningToDefer
+weight_model: ${model}
+loss:
+  _target_: train.loss.LossLearningToDefer
+  weight: [1, 1, 1]
+  alpha: 0
+  beta: 0
+  
+seed: 10
+output_dir: ./outputs/${commit_hash}/${dataset.name}/${method}/${trainer.seed}
+weight_decay: 0.005
+learning_rate: 0.005
+assign_interval: 50
+mode: train
+dataset_name: ${dataset.name}

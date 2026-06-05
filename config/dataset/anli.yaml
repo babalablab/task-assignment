@@ -1,0 +1,51 @@
+name: anli
+model: chincyk/deberta-v3-base-nli
+output_dir: data/anli/
+preprocess_target: preprocess.sentiment_analysis.ANLIPreprocess
+sampling_rate: 1.0
+filter_ratio: 0.0
+
+train_dataset:
+  _target_: dataset.nli.NLIDataset
+  model_name: ${dataset.model}
+  output_dir: ${dataset.output_dir}
+  data_name: ${dataset.name}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+  debug: ${debug}
+  mode: train
+  batch_size: 256
+  
+valid_dataset:
+  _target_: dataset.nli.NLIDataset
+  model_name: ${dataset.model}
+  output_dir: ${dataset.output_dir}
+  data_name: ${dataset.name}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: validation
+  batch_size: 256
+  
+test_dataset:
+  _target_: dataset.nli.NLIDataset
+  model_name: ${dataset.model}
+  output_dir: ${dataset.output_dir}
+  data_name: ${dataset.name}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: test
+  batch_size: 1024
+  

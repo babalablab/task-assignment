@@ -1,0 +1,56 @@
+model_name: xxx
+output_dir: data/cifar10
+dataset_target: dataset.cv.CVDataset
+preprocess_target: preprocess.cv.CIFAR10Preprocess
+name: cifar10
+label_num: 10
+sampling_rate: 1.0
+filter_ratio: 0.0
+
+train_dataset:
+  _target_: ${dataset.dataset_target}
+  model_name: ${dataset.model_name}
+  data_name: ${dataset.name}
+  output_dir: ${dataset.output_dir}
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.output_dir}
+    label_num: ${dataset.label_num}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: train
+  batch_size: 256
+  
+valid_dataset:
+  _target_: ${dataset.dataset_target}
+  model_name: ${dataset.model_name}
+  data_name: ${dataset.name}
+  output_dir: ${dataset.output_dir}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.output_dir}
+    label_num: ${dataset.label_num}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: validation
+  batch_size: 256
+
+
+test_dataset:
+  _target_: ${dataset.dataset_target}
+  model_name: ${dataset.model_name}
+  data_name: ${dataset.name}
+  output_dir: ${dataset.output_dir}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.output_dir}
+    label_num: ${dataset.label_num}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: test
+  batch_size: 256

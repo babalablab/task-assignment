@@ -1,0 +1,22 @@
+name: spiral_area
+
+train_dataset:
+  _target_ : dataset.SpiralAreaDatasetClassification
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : train
+  system_num: 3
+
+valid_dataset:
+  _target_ : dataset.SpiralAreaDatasetClassification
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : valid
+  system_num: 3
+
+test_dataset:
+  _target_ : dataset.SpiralAreaDatasetClassification
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : test
+  system_num: 3

@@ -1,0 +1,47 @@
+model: xxx
+output_dir: data/cifar100
+dataset_target: dataset.cv.CVDataset
+preprocess_target: preprocess.cv.CIFAR100Preprocess
+name: cifar100
+sampling_rate: 1.0
+
+train_dataset:
+  _target_: ${dataset.dataset_target}
+  model_name: ${dataset.model}
+  data_name: ${dataset.name}
+  output_dir: ${dataset.output_dir}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.output_dir}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  sampling_rate: ${dataset.sampling_rate}
+  mode: train
+  batch_size: 256
+  
+valid_dataset:
+  _target_: ${dataset.dataset_target}
+  model_name: ${dataset.model}
+  data_name: ${dataset.name}
+  output_dir: ${dataset.output_dir}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.output_dir}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: validation
+  batch_size: 256
+
+
+test_dataset:
+  _target_: ${dataset.dataset_target}
+  model_name: ${dataset.model}
+  data_name: ${dataset.name}
+  output_dir: ${dataset.output_dir}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    output_dir: ${dataset.output_dir}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: test
+  batch_size: 256

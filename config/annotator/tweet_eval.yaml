@@ -1,0 +1,6 @@
+_target_: llm_annotation.TweetEvalLLMAnnotation
+output_dir: data/llm_annotation/tweet_eval/
+prompt_file: prompts/tweet_eval.txt
+data_name: cardiffnlp/tweet_eval
+model_name: meta-llama/Llama-3.1-8B-Instruct
+

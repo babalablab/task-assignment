@@ -1,0 +1,23 @@
+defaults:
+  - _self_
+  - dataset: spiral
+  - trainer: spiral
+  - model: common_confusion
+
+method: train
+name: ${trainer.dataset_name} experiment
+debug: false
+abci: false
+mode: train
+annotator_num: 6
+
+commit_hash: "${commit_hash: ${debug}}"
+wandb_enabled: true
+wandb_entity: "kei-moriyama-the-university-of-tokyo"
+wandb_project: "task assignment"
+
+logger:
+  _target_: lightning.pytorch.loggers.WandbLogger
+
+train:
+  epoch: 150

@@ -1,0 +1,13 @@
+Choose the sentiment of the given text from Positive and Negative.
+Your answer should be the {1} if the sentiment is Positive and {0} if the sentiment is Negative.
+
+These are examples of the tasks.
+Text: She also recently referred to President Trump as a “piece of shit” because of his position on the Dakota Access Pipeline (DAPL) protests.
+Sentiment : {0}
+
+Text: “The reasons for my departure are personal, but it has been my great honor to serve President Trump and this administration,” Dubke, 47, wrote in an email to friends, according to Politico.
+Sentiment : {1}
+
+Now, answer the sentiment of this text.
+Text: ${target_text}
+Sentiment: 

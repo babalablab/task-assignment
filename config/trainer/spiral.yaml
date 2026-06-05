@@ -1,0 +1,15 @@
+_target_: train.train.ModelTrainer
+weight_model: ${model}
+matching_model:
+  _target_: model.MatchingBatchModel
+  
+loss:
+  _target_: train.loss.LossConfusion
+  alpha: 0.01
+  beta : 1
+  
+dataset_name: spiral
+seed: 10
+output_dir: ./outputs/${commit_hash}/${trainer.dataset_name}/$loss/${trainer.seed}
+learning_rate: 0.01
+weight_decay: 0.005

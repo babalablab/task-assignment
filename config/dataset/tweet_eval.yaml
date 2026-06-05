@@ -1,0 +1,39 @@
+name: tweet_eval
+target: dataset.tweet_eval.TweetEvalDataset
+sampling_rate: 1
+filter_ratio: 0
+
+train_dataset:
+  _target_: ${dataset.target}
+  batch_size: 32
+  debug: ${debug}
+  mode: train
+  output_dir: data/tweet_eval/
+  model_name: google-bert/bert-base-uncased 
+  seed: ${trainer.seed}
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+  
+
+valid_dataset:
+  _target_: ${dataset.target}
+  batch_size: 32
+  debug: ${debug}
+  mode: validation
+  output_dir: data/tweet_eval/
+  model_name: google-bert/bert-base-uncased 
+  seed: ${trainer.seed}
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+
+
+test_dataset:
+  _target_: ${dataset.target}
+  batch_size: 32
+  debug: ${debug}
+  mode: test
+  output_dir: data/tweet_eval/
+  model_name: google-bert/bert-base-uncased 
+  seed: ${trainer.seed}
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}

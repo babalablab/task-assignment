@@ -1,0 +1,21 @@
+Predict the emoji that follows the given text.
+The list of emoji is "📷", "🔥", "😊" and "😜".
+Your answer should be {0} if the following emoji is "🔥", {1} if the following emoji is "📷", {2} if the following emoji is "😜", and {3} if the following emoji is "😊".
+
+These are examples of the given text and answer.
+
+Text: The powerful track "Black Friday" by Kendrick Lamar
+Answer: {0}
+
+Text: My weekend adventures. Check out more pics from this shoot at @user! #canon #photojunkie
+Answer: {1}
+
+Text: Star Wars: The Force Awakens with the fam. Loved it! #starwars #episodevii #movies #family
+Answer: {2}
+
+Text: A magical night with moonlight dancing. Life is good.
+Answer: {3}
+
+Now, answer the emoji that follows the given text.
+Text: ${target_text}
+Emoji: 

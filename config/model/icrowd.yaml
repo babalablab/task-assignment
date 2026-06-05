@@ -1,0 +1,7 @@
+_target_: model.SpiraliCrowd
+threshold: 0.9
+debug: ${debug}
+seed: ${trainer.seed}
+output_dir: ./outputs/${commit_hash}/${dataset.name}/${method}/${trainer.seed}
+dataset_name: ${dataset.name}
+system_num: ${annotator_num}

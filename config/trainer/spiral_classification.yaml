@@ -1,0 +1,7 @@
+_target_: train.train.ClassificationTrainer
+weight_model: ${model}
+learning_rate: 0.005
+weight_decay: 0.005
+seed: 10
+output_dir: ./outputs/${commit_hash}/spiral_classification
+dataset_name: spiral

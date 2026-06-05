@@ -1,0 +1,16 @@
+Choose the sentiment of the given text from Positive and Negative.
+Your answer should be the {1} if the sentiment is Positive, {0} if the sentiment is Negative, {2} if the sentiment has no impact and {3} if the sentiment is both Positive and Negative .
+
+These are examples of the tasks.
+Text: press hard the enemies towers!.
+Sentiment : {0}
+
+Text: taking and giving radiance, and the mountains
+Sentiment : {1}
+
+Text : to sky, cloudlike on the bush afar,
+Sentiment : {2}
+
+Now, answer the sentiment of this text.
+Text: ${target_text}
+Sentiment: 

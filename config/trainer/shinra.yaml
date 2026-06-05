@@ -1,0 +1,18 @@
+_target_: train.train.ModelTrainer
+weight_model: ${model}
+matching_model:
+  _target_: model.MatchingBatchModel
+  out_dim: ${dataset.train_dataset.system_num}
+
+loss: 
+  _target_: train.loss.LossCommonConfusion
+  alpha: 0.0001
+  beta: 0.01
+
+seed: 10
+output_dir: ./outputs/${commit_hash}/shinra/${method}/${trainer.seed}
+weight_decay: 0.005
+learning_rate: 0.005
+assign_interval: 100
+mode: train
+dataset_name: shinra

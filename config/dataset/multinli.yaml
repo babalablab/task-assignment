@@ -1,0 +1,49 @@
+name: multinli
+model: chincyk/deberta-v3-base-nli
+sampling_rate: 1.0
+filter_ratio: 0.0
+
+train_dataset:
+  _target_: dataset.nli.NLIDataset
+  model_name: ${dataset.model}
+  output_dir: data/multinli/
+  data_name: ${dataset.name}
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.MultiNLIPreprocess
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: train
+  batch_size: 256
+  
+valid_dataset:
+  _target_: dataset.nli.NLIDataset
+  model_name: ${dataset.model}
+  output_dir: data/multinli/
+  data_name: ${dataset.name}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.MultiNLIPreprocess
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: validation
+  batch_size: 256
+  
+test_dataset:
+  _target_: dataset.nli.NLIDataset
+  model_name: ${dataset.model}
+  output_dir: data/multinli/
+  data_name: ${dataset.name}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.MultiNLIPreprocess
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+  seed: ${trainer.seed}
+  debug: ${debug}
+  mode: test
+  batch_size: 1024
+  

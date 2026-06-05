@@ -1,0 +1,19 @@
+# @package _global_
+defaults:
+  - override /trainer: sentiment
+  - override /dataset: tweet_eval
+  - override /model : confusion
+
+annotator_num: 5
+trainer:
+  random_assignment: false
+  matching_model:
+    _target_: model.CostConstraint
+    annotator_num: ${annotator_num}
+    cost_per_annotator: [0.078, 0.067, 0.044, 0.044, 0.002]
+    total_cost_per_annotator: [8, 5, 3, 3, 1]
+    seed: ${trainer.seed}
+  weight_model:
+    _target_: model.ConfusionModel
+    out_dim: 4
+    annotator_num: ${annotator_num}

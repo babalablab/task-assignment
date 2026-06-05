@@ -1,0 +1,25 @@
+# @package _global_
+defaults:
+  - override /trainer: spiral
+  - override /dataset: spiral_test_num
+  - override /model: confusion
+
+method: confusion
+annotator_num: 3
+
+trainer:
+  dataset_name: spiral
+  loss:
+    _target_: train.loss.LossConfusion
+    alpha: 0.01
+    beta: 1
+  weight_model:
+    _target_: model.ConfusionModel
+    input_dim: 2
+    hidden_dim: 4
+    out_dim: 3
+    annotator_num: ${annotator_num}
+    layer_num: 3
+  matching_model:
+    _target_: model.MaximumNumberConstraint
+    annotator_num: ${annotator_num}

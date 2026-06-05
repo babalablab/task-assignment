@@ -1,0 +1,48 @@
+name: imdb_vocab
+sampling_rate: 1.0
+filter_ratio: 0.0
+
+train_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: train
+  data_name: imdb
+  output_dir: data/imdb_vocab/
+  model_name: pursuitofds/finetuned_sentiment_bert_base_model 
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.IMDBPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+
+
+valid_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: validation
+  data_name: imdb
+  output_dir: data/imdb_vocab/
+  model_name: pursuitofds/finetuned_sentiment_bert_base_model 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.IMDBPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}
+
+test_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: test
+  data_name: imdb
+  output_dir: data/imdb_vocab/
+  model_name: pursuitofds/finetuned_sentiment_bert_base_model 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.IMDBPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+    seed: ${trainer.seed}

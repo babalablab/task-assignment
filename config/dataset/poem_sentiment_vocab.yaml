@@ -1,0 +1,45 @@
+name: poem_sentiment_vocab
+sampling_rate: 1.0
+filter_ratio: 0.0
+
+train_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: train
+  data_name: poem_sentiment
+  output_dir: data/poem_sentiment_vocab/
+  model_name: google-bert/bert-base-uncased
+  sampling_rate: ${dataset.sampling_rate}
+  filter_ratio: ${dataset.filter_ratio}
+  seed: 10
+  preprocess:
+    _target_: preprocess.sentiment_analysis.PoemSentimentPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+
+
+valid_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: validation
+  data_name: poem_sentiment
+  output_dir: data/poem_sentiment_vocab/
+  model_name: google-bert/bert-base-uncased 
+  seed: 10
+  preprocess:
+    _target_: preprocess.sentiment_analysis.PoemSentimentPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}
+
+test_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: test
+  data_name: poem_sentiment
+  output_dir: data/poem_sentiment_vocab/
+  model_name: google-bert/bert-base-uncased 
+  seed: 10
+  preprocess:
+    _target_: preprocess.sentiment_analysis.PoemSentimentPreprocessVocab
+    output_dir: ${dataset.train_dataset.output_dir}

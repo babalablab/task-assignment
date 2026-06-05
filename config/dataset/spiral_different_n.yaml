@@ -1,0 +1,36 @@
+name: spiral_n_different
+target: dataset.SpiralDatasetDifferentAnnotNum
+preprocess_target: preprocess.SpiralPreprocessTaskAssignmentDifferentSystemNum
+
+train_dataset:
+  _target_: ${dataset.target}
+  seed: ${trainer.seed}
+  batch_size: 1024
+  mode: train
+  annot_num: ${annotator_num}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    system_num: ${annotator_num}
+    debug: false
+
+valid_dataset:
+  _target_: ${dataset.target}
+  seed: ${trainer.seed}
+  batch_size: 1024
+  mode: valid
+  annot_num: ${annotator_num}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    system_num: ${annotator_num}
+    debug: false
+
+test_dataset:
+  _target_: ${dataset.target}
+  seed: ${trainer.seed}
+  batch_size: 1024
+  mode: test
+  annot_num: ${annotator_num}
+  preprocess:
+    _target_: ${dataset.preprocess_target}
+    system_num: ${annotator_num}
+    debug: false

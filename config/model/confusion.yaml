@@ -1,0 +1,6 @@
+_target_: model.ConfusionModel
+input_dim: 768
+out_dim: 3
+hidden_dim: 8
+layer_num: 2
+annotator_num: ${annotator_num}

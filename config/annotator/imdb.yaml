@@ -1,0 +1,5 @@
+_target_: llm_annotation.IMDBLLMAnnotation
+output_dir: data/llm_annotation/imdb/
+prompt_file: prompts/sst2.txt
+data_name: stanfordnlp/imdb
+model_name: model/Llama-3.1-8B-Instruct

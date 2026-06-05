@@ -1,0 +1,30 @@
+name: shinra
+train_dataset:
+  _target_: dataset.ShinraAgentAccuracyDataset
+  around_text: false
+  system_num: 6
+  batch_size: 512
+  debug: ${debug}
+  mode: train
+  method: ${method}
+  seed: ${trainer.seed}
+
+valid_dataset:
+  _target_: dataset.ShinraAgentAccuracyDataset
+  around_text: false
+  system_num: 6
+  batch_size: 512
+  debug: ${debug}
+  mode: valid
+  method: ${method}
+  seed: ${trainer.seed}
+
+test_dataset:
+  _target_: dataset.ShinraAgentAccuracyDataset
+  around_text: false
+  system_num: 6
+  batch_size: 512
+  debug: ${debug}
+  mode: test
+  method: ${method}
+  seed: ${trainer.seed}

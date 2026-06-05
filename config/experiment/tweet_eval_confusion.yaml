@@ -1,0 +1,16 @@
+# @package _global_
+defaults:
+  - override /trainer: sentiment
+  - override /dataset: tweet_eval
+  - override /model : confusion
+
+annotator_num: 5
+trainer:
+  loss:
+    _target_: train.loss.LossConfusion
+    alpha: 0.01
+    beta : 1
+  weight_model:
+    _target_: model.ConfusionModel
+    out_dim: 4
+    annotator_num: ${annotator_num}

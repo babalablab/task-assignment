@@ -1,0 +1,5 @@
+_target_: llm_annotation.PoemSentimentLLMAnnotation
+output_dir: data/llm_annotation/poem_sentiment/
+prompt_file: prompts/poem_sentiment.txt
+data_name: google-research-datasets/poem_sentiment
+model_name: model/Llama-3.1-8B-Instruct

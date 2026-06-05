@@ -1,0 +1,38 @@
+# @package _global_
+defaults:
+  - override /trainer: sentiment
+  - override /dataset: tweet_eval_vocab
+  - override /model: linear
+
+hydra:
+  sweeper:
+    params:
+      trainer.seed: 10,20,30,40,50
+model:
+  input_dim: 2
+  out_dim: ${annotator_num}
+
+annotator_num: 3
+
+trainer:
+  weight_model: 
+    _target_: model.LinearModel
+    input_dim: 768
+    hidden_dim: 4
+    out_dim: ${annotator_num}
+    layer_num: 3
+  matching_model:
+    _target_: model.MatchingBatchModel
+    out_dim: ${annotator_num}
+
+  loss:
+    _target_: train.loss.LossLearningToDefer
+    alpha: 0.01
+    beta: 1
+
+  seed: 10
+  output_dir: ./outputs/${commit_hash}/tweet_eval/${method}/${trainer.seed}
+  weight_decay: 0.005
+  learning_rate: 0.005
+  assign_interval: 50
+  mode: train

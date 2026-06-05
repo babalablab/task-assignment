@@ -1,0 +1,32 @@
+# @package _global_
+defaults:
+  - override /model : icrowd
+  - override /trainer: icrowd
+
+method: icrowd
+
+trainer:
+  _target_: train.icrowd.NLPICrowdTaskAssignment
+  seed: 10
+  dataset_name: tweet_eval_vocab
+  model: 
+    _target_: model.icrowd.NLPICrowd
+    threshold: 0.9
+    dataset_name: ${trainer.dataset_name}
+    train_data_path: data/${trainer.dataset_name}/tweet_eval_${trainer.seed}_train.csv
+    test_data_path: data/${trainer.dataset_name}/tweet_eval_${trainer.seed}_test.csv
+    seed: ${trainer.seed}
+    output_dir: ./outputs/${commit_hash}/${trainer.dataset_name}/
+    debug: ${debug}
+    system_num: ${annotator_num}
+    model_name: google-bert/bert-base-uncased 
+    preprocess:
+      _target_: preprocess.sentiment_analysis.TweetEvalPreprocessVocab
+      output_dir: data/${trainer.dataset_name}
+      seed: ${trainer.seed}
+  matching_model:
+    _target_: model.MatchingBatchModel
+    out_dim: ${annotator_num}
+    seed: ${trainer.seed}
+
+annotator_num: 3

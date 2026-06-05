@@ -1,0 +1,19 @@
+# Learning From Noisy Labels by Regularized Estimation of Annotator Confusionの手法
+_target_: train.train.ModelTrainer
+weight_model: ${model}
+matching_model:
+  _target_: model.MatchingBatchModel
+  out_dim: 3
+
+loss:
+  _target_: train.loss.LossCommonConfusion
+  alpha: 0.1
+  beta: 0.1
+
+seed: 10
+output_dir: ./outputs/${commit_hash}/multinli/$loss/${trainer.seed}
+weight_decay: 0.005
+learning_rate: 0.005
+assign_interval: 50
+mode: train
+dataset_name: multinli

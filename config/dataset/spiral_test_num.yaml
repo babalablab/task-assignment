@@ -1,0 +1,43 @@
+name: spiral_different_test_num
+model_name: xxx
+target: dataset.SpiralDatasetDifferentTestNum
+test_data_num: 1000
+
+train_dataset:
+  _target_ : ${dataset.target}
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : train
+  test_data_num: ${dataset.test_data_num}
+  annotator_num: ${annotator_num}
+  preprocess:
+    _target_: preprocess.SpiralPreprocessTaskAssignmentDataNum
+    debug: false
+    test_data_num: ${dataset.test_data_num}
+    annotator_num: ${annotator_num}
+
+valid_dataset:
+  _target_ : ${dataset.target}
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : valid
+  test_data_num: ${dataset.test_data_num}
+  annotator_num: ${annotator_num}
+  preprocess:
+    _target_: preprocess.SpiralPreprocessTaskAssignmentDataNum
+    debug: false
+    test_data_num: ${dataset.test_data_num}
+    annotator_num: ${annotator_num}
+
+test_dataset:
+  _target_ : ${dataset.target}
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : test
+  test_data_num: ${dataset.test_data_num}
+  annotator_num: ${annotator_num}
+  preprocess:
+    _target_: preprocess.SpiralPreprocessTaskAssignmentDataNum
+    debug: false
+    test_data_num: ${dataset.test_data_num}
+    annotator_num: ${annotator_num}

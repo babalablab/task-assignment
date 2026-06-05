@@ -1,0 +1,43 @@
+name: sst2
+sampling_rate: 1
+
+train_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: train
+  data_name: sst2
+  output_dir: data/sst2/
+  model_name: syedkhalid076/RoBERTa-Sentimental-Analysis-Model 
+  seed: ${trainer.seed}
+  sampling_rate: ${dataset.sampling_rate}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.SST2Preprocess
+    output_dir: ${dataset.train_dataset.output_dir}
+
+
+valid_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: validation
+  data_name: sst2
+  output_dir: data/sst2/
+  model_name: syedkhalid076/RoBERTa-Sentimental-Analysis-Model 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.SST2Preprocess
+    output_dir: ${dataset.train_dataset.output_dir}
+
+test_dataset:
+  _target_: dataset.sentiment_analysis.SentimentAnalysisDataset
+  batch_size: 32
+  debug: ${debug}
+  mode: test
+  data_name: sst2
+  output_dir: data/sst2/
+  model_name: syedkhalid076/RoBERTa-Sentimental-Analysis-Model 
+  seed: ${trainer.seed}
+  preprocess:
+    _target_: preprocess.sentiment_analysis.SST2Preprocess
+    output_dir: ${dataset.train_dataset.output_dir}

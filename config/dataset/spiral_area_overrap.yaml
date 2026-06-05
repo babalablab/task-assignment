@@ -1,0 +1,34 @@
+name: spiral_area_overrap
+
+train_dataset:
+  _target_ : dataset.SpiralDataset
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : train
+  system_num: 3
+  data_path: ./data/spiral_area_overrap/train_seed_${trainer.seed}.csv
+  preprocess:
+    _target_: preprocess.SpiralAreaOverrapPreprocessTaskAssignment
+    debug: false
+
+valid_dataset:
+  _target_ : dataset.SpiralDataset
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : valid
+  system_num: 3
+  data_path: ./data/spiral_area_overrap/valid_seed_${trainer.seed}.csv
+  preprocess:
+    _target_: preprocess.SpiralAreaOverrapPreprocessTaskAssignment
+    debug: false
+
+test_dataset:
+  _target_ : dataset.SpiralDataset
+  seed : ${trainer.seed}
+  batch_size: 1024
+  mode : test
+  system_num: 3
+  data_path: ./data/spiral_area_overrap/test_seed_${trainer.seed}.csv
+  preprocess:
+    _target_: preprocess.SpiralAreaOverrapPreprocessTaskAssignment
+    debug: false

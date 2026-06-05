@@ -1,0 +1,4 @@
+seed: 10
+dataset_name: ${dataset.name}
+model:
+  ${model}
