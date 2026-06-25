@@ -206,7 +206,22 @@ With `debug=true`, `commit_hash` becomes `debug_mode`.
 ## 6. Citation
 
 ```bibtex
-{
-    WIP
+@inproceedings{moriyama-etal-2026-task,
+    title = "Task Assignment meets Annotator Modeling: Human-{LLM} Collaborative Annotation with Constraints",
+    author = "Moriyama, Kei  and
+      Nakayama, Kouta  and
+      Baba, Yukino",
+    editor = "T.Y.S.S., Santosh  and
+      Rodriguez, Juan Diego  and
+      de Gibert, Ona",
+    booktitle = "Proceedings of the 64th Annual Meeting of the {A}ssociation for {C}omputational {L}inguistics (Volume 4: Student Research Workshop)",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.acl-srw.79/",
+    pages = "888--902",
+    ISBN = "979-8-89176-393-7",
+    abstract = "Crowdsourced annotators and Large Language Models (LLMs) offer complementary, cost-effective ways to obtain labeled data, yet ensuring high label quality remains challenging.We observe that task features influence the accuracy of humans and LLMs, while real-world constraints, such as per-annotator assignment limits, further complicate allocation.Prior work typically addresses either task features or constraints, but not both.We present an integrated framework that (i) estimates per-task accuracy from task features using a \textit{learning from crowds} model and (ii) incorporates these estimations into a linear programming formulation that assigns tasks under practical constraints. Experimental results demonstrate that the proposed method achieves accuracy comparable to that of baseline methods while satisfying given constraints."
 }
 ```
